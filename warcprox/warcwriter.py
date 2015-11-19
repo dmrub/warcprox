@@ -117,6 +117,7 @@ class WarcWriter:
             headers.append((warctools.WarcRecord.TYPE, warc_type))
         headers.append((warctools.WarcRecord.ID, record_id))
         headers.append((warctools.WarcRecord.DATE, warc_date))
+        headers.append((b'WARC-Timestamp', datetime.utcnow().isoformat().encode('utf-8')))
         headers.append((warctools.WarcRecord.URL, url))
         if remote_ip is not None:
             headers.append((warctools.WarcRecord.IP_ADDRESS, remote_ip))
